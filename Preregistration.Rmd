@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## What is the hypothesis that will be investigated?
 
 **Research Question:**  
-For the purpose of further evaluating and comparing the scale/item set of Painful, Distracting and Restrictive (PDR) clothing in [Engeln & Zola 2021](https://doi.org/10.1007/s11199-021-01230-9): what is the dimensionality and appropriateness of fitting of an Item Response Theory model to PDR clothing items representing ‘discomfort for appearance’
+For the purpose of further evaluating and comparing the scale/item set of Painful, Distracting and Restrictive (PDR) clothing in [Engeln & Zola 2021](https://doi.org/10.1007/s11199-021-01230-9): what is the dimensionality and appropriateness of fitting of an Item Response Theory model to PDR clothing items representing ‘discomfort/distraction for appearance’
 
 **Hypotheses:**  
   

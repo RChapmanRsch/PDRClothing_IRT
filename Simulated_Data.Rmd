@@ -63,6 +63,8 @@ In sample 2, the same inclusion/exclusion criteria were used, with the addition 
 
 ```{r DataSimCleaning, echo=FALSE}
 source("data/Sim_and_Data_Cleaning.R")
+osf_download(osf_ls_files(osf_retrieve_node("https://osf.io/eyn3x/"))[1,], path="data/", conflict="overwrite")
+Data=read.csv("engeln_zola_2021.csv")
 ```
 
 **Data Prep and Description**  
@@ -80,20 +82,21 @@ source("data/Sim_and_Data_Cleaning.R")
     + Cross-check data variables with data dictionary
       - *Base R: names(Data) %in%  names(Codebook)*
 ```{r VarsInDataDictionary}
+osf_download(osf_ls_files(osf_retrieve_node("https://osf.io/eyn3x/"))[3,], path="data/", conflict="overwrite")
+source("data/Generate_Codebook.R")
   ###Are all items present?
-  if(any(!(names(Data) %in% names(Codebook)))){
-    print(paste("names in Data, but not in Codebook:",names(Data)[which(!(names(Data) %in% names(Codebook)))]))
-    print(paste("names in Codebook, but not in Data:",names(Codebook)[which(!(names(Codebook) %in% names(Data)))]))
+  if(any(!(names(Data) %in% names(Codebook_list)))){
+    print(paste("names in Data, but not in Codebook:",names(Data)[which(!(names(Data) %in% names(Codebook_list)))]))
+    print(paste("names in Codebook, but not in Data:",names(Codebook_list)[which(!(names(Codebook_list) %in% names(Data)))]))
   }else{print("All names in Data and Codebook match")}
 ```
-
     + Checking that variables meet expected range/values
       - *Base R: unique(Data[,var]) %in% Codebook[Var]$Values*
 ```{r OutOfRangeValues}
   #Out of Range values 
-  sapply(names(Codebook), function(Var){
-    if(!all(is.na(Codebook[[Var]]$Value))){
-      unique(Data[,Var])[!(unique(Data[,Var]) %in% Codebook[[Var]]$Value)]}})
+  sapply(names(Codebook_list), function(Var){
+    if(!all(is.na(Codebook_list[[Var]]$Value))){
+      unique(Data[,Var])[!(unique(Data[,Var]) %in% Codebook_list[[Var]]$Value)]}})
 ```
 
     + Visualization
