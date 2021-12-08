@@ -19,6 +19,6 @@ dev.off()}}
 Barplots=function(Data, folder="Barplots/", fileprefix=""){
 for(VarName in names(Data)){
 jpeg(paste0(folder,fileprefix,VarName,".jpg"))
-barplot(table(Data[,1]), main=names(Data)[1], ylab="count")
+barplot(table(Data[,VarName]), main=VarName, ylab="count")
 dev.off()}}
 
